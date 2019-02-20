@@ -1,0 +1,110 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "790ff8a1-f1ca-418b-ac0a-64024a8bb82e": {
+        "id": "790ff8a1-f1ca-418b-ac0a-64024a8bb82e",
+        "parent": null,
+        "name": "test",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "1e60341c-4b80-4d67-a4af-2a041b1e4cf9"
+        ],
+        "isRemovable": false,
+        "filePath": "test"
+      },
+      "1e60341c-4b80-4d67-a4af-2a041b1e4cf9": {
+        "id": "1e60341c-4b80-4d67-a4af-2a041b1e4cf9",
+        "parent": "790ff8a1-f1ca-418b-ac0a-64024a8bb82e",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "test/lambda.js",
+        "code": "\nlet Swagger = require('swagger-client');\n\nexports.handler = function (event, context, callback) {\n\n    Swagger.http({\n        url: 'https://services.apixplatform.com/api-sandbox/application/token',\n        method: 'post',\n        query: {},\n        headers: { \"Accept\": \"*/*\", \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n            \"userName\": \"modelbankuser@inboxbear.com\",\n            \"password\": \"1qaz2wsx@\"\n        })\n    }).then((response) => {\n        var access_token = \"bearer \" + response.body.access_token;\n        // Insert new API calls here to call with APIX Access Token\n\n\n        callback(null, access_token);\n    }).catch((err) => {\n        console.log(err);\n        callback(\"Execution failed\");\n    });\n\n}",
+        "triggers": [
+          {
+            "resourceName": "apigusEast1testrpathget",
+            "config": {}
+          }
+        ],
+        "config": {
+          "runtime": "nodejs8.10",
+          "timeout": 60,
+          "memory": 128
+        },
+        "testCases": {
+          "b562ff0f-a003-4328-80c4-c98b021bad4b": {
+            "id": "b562ff0f-a003-4328-80c4-c98b021bad4b",
+            "name": "Unnamed event",
+            "functionId": "1e60341c-4b80-4d67-a4af-2a041b1e4cf9",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "790ff8a1-f1ca-418b-ac0a-64024a8bb82e",
+    "openFiles": [
+      "1e60341c-4b80-4d67-a4af-2a041b1e4cf9"
+    ],
+    "currentFileId": "1e60341c-4b80-4d67-a4af-2a041b1e4cf9",
+    "resources": {
+      "apigusEast1testrpathget": {
+        "name": "apigusEast1testrpathget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 0,
+          "apiName": "testr",
+          "endpointType": "EDGE",
+          "resourceMode": 0,
+          "resourceName": "path",
+          "resourcePath": "/path",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 0,
+          "stageName": "prod"
+        },
+        "globallyEditable": false
+      }
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "swagger-client": {
+          "name": "swagger-client",
+          "version": "3.8.21"
+        }
+      }
+    },
+    "lambdaId": "1e60341c-4b80-4d67-a4af-2a041b1e4cf9"
+  },
+  "PROJECT_META": {
+    "projectName": "test",
+    "projectDescription": "test",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1550656307409
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "test",
+      "url": "https://github.com/apixDemo/test-sigma-1550656335093"
+    }
+  }
+}
